@@ -1,25 +1,29 @@
 // Créé une requète fetch pour récupérer les données
-function getFetch(){
+function getFetch() {
   var input = document.getElementById('mySearch')
-  
-  if(input == undefined){ var city = "Paris" }else{var city = input.value}
+
+  if (input == undefined) {
+    var city = "Paris"
+  } else {
+    var city = input.value
+  }
 
 
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=fr&units=metric&appid=48fe072d754d789378b9e722f15478f3`)
-.then(response => response.json())
-.then((data) => {
-  const app = document.getElementById('app')
-  app.innerHTML =''
-  buildCard(data)
-})
-.catch(function(error) {
-  input = ""
-  getFetch()
-});
+    .then(response => response.json())
+    .then((data) => {
+      const app = document.getElementById('app')
+      app.innerHTML = ''
+      buildCard(data)
+    })
+    .catch(function (error) {
+      input = ""
+      getFetch()
+    });
 }
 
 // Créé la barre de recherche
-function buildSearch(){
+function buildSearch() {
   const apps = document.getElementById('app')
   const container = document.createElement('div')
   const colmd12 = document.createElement('div')
@@ -46,22 +50,22 @@ function buildSearch(){
 }
 
 // Crée la card
-function buildCard(data){
-  
+function buildCard(data) {
+
   const app = document.getElementById('app')
   const container = document.createElement('div')
   const row = document.createElement('div')
   const card = document.createElement('div')
   const cardBody = document.createElement('div')
   const cardTitle = document.createElement('div')
-  
+
 
   container.setAttribute('class', 'container')
   row.setAttribute('class', 'row')
   card.setAttribute('class', 'card')
   cardBody.setAttribute('class', 'card-body')
   cardTitle.setAttribute('class', 'card-title')
- 
+
   cardTitle.innerHTML = `<img src=' http://openweathermap.org/img/wn/${data.weather[0].icon}.png'> ${data.name}, ${data.main.temp}°c <br><br> ${data.weather[0].description}`
 
   app.appendChild(container)
@@ -75,4 +79,3 @@ function buildCard(data){
 
 // Génération de la card avec la ville par defaut "Paris"
 getFetch()
-
