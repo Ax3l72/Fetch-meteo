@@ -9,7 +9,6 @@ function getFetch(){
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=fr&units=metric&appid=48fe072d754d789378b9e722f15478f3`)
 .then(response => response.json())
 .then((data) => {
-  //console.log(data);
   const app = document.getElementById('app')
   app.innerHTML =''
   buildCard(data)
@@ -36,7 +35,6 @@ function buildBtn(){
   
   search.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
-      console.log('tez')
       getFetch()
     } else return;
   })
