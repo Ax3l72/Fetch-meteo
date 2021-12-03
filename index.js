@@ -22,7 +22,6 @@ function buildBtn(){
   const colmd12 = document.createElement('div')
   const row = document.createElement('div')
   const search = document.createElement('input')
-  const btn = document.createElement('button')
 
   container.setAttribute('class', 'container')
   row.setAttribute('class', 'row')
@@ -30,14 +29,17 @@ function buildBtn(){
   search.setAttribute('type', 'text')
   search.setAttribute('id', 'mySearch')
 
-  btn.setAttribute('onclick', 'getFetch()')
-  btn.innerText = "Rechercher"
-
   apps.appendChild(container)
   container.appendChild(row)
   row.appendChild(colmd12)
   colmd12.appendChild(search)
-  colmd12.appendChild(btn)
+  
+  search.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {
+      console.log('tez')
+      getFetch()
+    } else return;
+  })
 }
 
 function buildCard(data){
