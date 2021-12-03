@@ -12,6 +12,10 @@ function getFetch(){
   app.innerHTML =''
   buildCard(data)
 })
+.catch(function(error) {
+  input = ""
+  getFetch()
+});
 }
 
 // Créé la barre de recherche
@@ -33,7 +37,7 @@ function buildSearch(){
   row.appendChild(colmd12)
   colmd12.appendChild(search)
 
-  // Event de la touche entrer afin de rechercher a nouveau
+  // Event de la touche entrée afin de rechercher a nouveau
   search.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
       getFetch()
