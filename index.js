@@ -1,5 +1,4 @@
-
-
+// Créé une requète fetch pour récupérer les données
 function getFetch(){
   var input = document.getElementById('mySearch')
   
@@ -15,7 +14,8 @@ function getFetch(){
 })
 }
 
-function buildBtn(){
+// Créé la barre de recherche
+function buildSearch(){
   const apps = document.getElementById('app')
   const container = document.createElement('div')
   const colmd12 = document.createElement('div')
@@ -32,7 +32,8 @@ function buildBtn(){
   container.appendChild(row)
   row.appendChild(colmd12)
   colmd12.appendChild(search)
-  
+
+  // Event de la touche entrer afin de rechercher a nouveau
   search.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
       getFetch()
@@ -40,6 +41,7 @@ function buildBtn(){
   })
 }
 
+// Crée la card
 function buildCard(data){
   
   const app = document.getElementById('app')
@@ -64,8 +66,9 @@ function buildCard(data){
   card.appendChild(cardBody)
   card.appendChild(cardTitle)
 
-  buildBtn()
+  buildSearch()
 }
 
+// Génération de la card avec la ville par defaut "Paris"
 getFetch()
 
